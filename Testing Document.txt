@@ -1,0 +1,73 @@
+Testing Document
+
+Q1. I need to understand our revenue performance and identify areas for improvement. What's our current situation?
+
+Expected Behavior:
+
+- Should call multiple functions: get_comprehensive_pipeline_health\
+- Provide executive summary with key metrics
+- Show visualizations of pipeline health, and top opportunities
+
+Q1 a. Based on what you just showed me, which specific accounts should we focus on this quarter?
+
+Expected Behavior:
+
+- Maintains context from previous analysis
+- Calls get_top_accounts_by_total_value
+- References insights from previous response
+- Shows context indicator
+
+---
+
+Q2. How are our different product lines performing compared to each other?
+
+Expected Behavior:
+
+- Calls compare_performance_metrics with dimension="product_category"
+- Shows analyze_product_win_rates
+- Creates bar charts and comparison visualizations
+
+Q2 a. Interesting. Now show me the trend for the top performing product over time
+
+Expected Behavior:
+
+- Remembers which product was top performing from previous response
+- Calls calculate_pipeline_trends filtered for that product
+- Shows trend visualization maintaining context
+
+Q2 b. Which sales reps are most successful with this product?
+
+Expected Behavior:
+
+- This should trigger error handling as sales rep data isn't available
+- Should provide helpful response explaining what data IS available
+- Suggests alternative analyses (by account, by contact title, etc.)
+
+---
+
+Q3. Show me the numbers
+
+Expected Behavior:
+
+- Recognizes query is too vague
+- Provides helpful error response asking for clarification
+- Lists available metrics and dimensions
+- Suggests example questions
+
+Q3 a. I mean the important ones for this month
+
+Expected Behavior:
+
+- Attempts to interpret based on common CRO needs
+- Might call get_high_probability_revenue_forecast, get_comprehensive_pipeline_health
+- Asks for further clarification on what "important" means
+- Maintains conversational tone
+
+Q3 b. Sorry, I specifically need to see deals closing this month with probability above 70%
+
+Expected Behavior:
+
+- Now understands the specific request
+- Calls get_high_probability_revenue_forecast with min_probability=70
+- Shows clear visualization
+- Acknowledges the clarification
