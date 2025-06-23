@@ -21,6 +21,8 @@
 
    ```bash
    git clone https://github.com/prayutjain/revenue-analytics.git
+   python -m venv .venv
+   .venv/bin/activate
    cd revenue-analytics-backend
    ```
 
