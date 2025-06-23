@@ -50,7 +50,7 @@ project-root/
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/prayutjain/revenue-analytics.git
+   git clone https://github.com/prayutjain/EragonRevenueAnalytics.git
    python -m venv .venv
    .venv/bin/activate
    cd revenue-analytics-backend
