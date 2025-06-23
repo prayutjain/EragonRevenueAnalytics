@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pandas
+openai
+pydantic
+python-multipart
+reportlab
+matplotlib
+seaborn
