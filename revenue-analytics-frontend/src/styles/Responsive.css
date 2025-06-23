@@ -1,0 +1,322 @@
+/* Responsive Design and Accessibility Styles */
+
+@media (max-width: 1024px) {
+  .chat-container {
+    height: 70vh;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .visualizations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics-chart {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-content {
+    min-height: 250px;
+  }
+
+  .chart-title-row {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 16px;
+  }
+
+  .chat-layout {
+    gap: 16px;
+  }
+
+  .sidebar {
+    padding: 16px;
+  }
+
+  .chat-messages {
+    padding: 16px;
+  }
+
+  .input-area {
+    padding: 16px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .submit-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .message {
+    max-width: 95%;
+  }
+
+  .metric-card {
+    padding: 16px;
+  }
+
+  .metric-value {
+    font-size: 24px;
+  }
+
+  .chart-title {
+    font-size: 16px;
+  }
+
+  .smart-chart {
+    padding: 16px;
+  }
+
+  .data-sources-citation {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .message-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .pdf-download-button {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .streaming-status {
+    padding: 8px 12px;
+  }
+
+  .status-content {
+    gap: 8px;
+  }
+
+  .status-text {
+    gap: 1px;
+  }
+
+  .status-message {
+    font-size: 13px;
+  }
+
+  .status-iteration, .status-function {
+    font-size: 11px;
+  }
+}
+
+/* Print styles for better PDF preview */
+@media print {
+  .sidebar,
+  .input-area,
+  .header-content,
+  .pdf-download-button {
+    display: none !important;
+  }
+
+  .chat-container {
+    box-shadow: none;
+    border: none;
+    height: auto;
+  }
+
+  .message {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .visualization-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* Dark mode support (for future implementation) */
+@media (prefers-color-scheme: dark) {
+  .revenue-dashboard {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    color: #f9fafb;
+  }
+
+  .dashboard-header,
+  .sidebar,
+  .chat-container {
+    background-color: #374151;
+    border-color: #4b5563;
+  }
+
+  .message.assistant {
+    background-color: #4b5563;
+    color: #f9fafb;
+  }
+
+  .query-input {
+    background-color: #374151;
+    border-color: #4b5563;
+    color: #f9fafb;
+  }
+
+  .quick-question {
+    background-color: #374151;
+    border-color: #4b5563;
+    color: #d1d5db;
+  }
+}
+
+/* Container queries for advanced responsive design */
+@container (max-width: 600px) {
+  .visualization-card {
+    padding: 12px;
+  }
+  
+  .chart-title {
+    font-size: 16px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .message.assistant {
+    border: 2px solid #000000;
+  }
+  
+  .message.user {
+    border: 2px solid #ffffff;
+  }
+  
+  .quick-question:hover {
+    border: 2px solid #000000;
+  }
+}
+
+/* Better support for screen readers */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Enhanced tooltip styles (for future implementation) */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1f2937;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  z-index: 1000;
+}
+
+.tooltip:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Enhanced selection styles */
+::selection {
+  background-color: #8b5cf6;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #8b5cf6;
+  color: white;
+}
+
+/* Improved focus visibility */
+*:focus {
+  outline-offset: 2px;
+}
+
+/* Enhanced error states */
+.error-state {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.success-state {
+  border-color: #10b981;
+  background-color: #f0fdf4;
+}
+
+/* Ensure proper spacing and layout */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Ensure proper z-index stacking */
+.dashboard-header {
+  z-index: 100;
+  position: relative;
+}
+
+.sidebar {
+  z-index: 50;
+  position: relative;
+}
+
+.streaming-status {
+  z-index: 10;
+  position: relative;
+}
