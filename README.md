@@ -207,9 +207,10 @@ Ensure you have the following installed:
 ### 🚀 Install & Run Frontend
 
 ```bash
-cd frontend
+cd revenue-analytics-frontend
 npm install
-npm run dev
+npm install recharts lucide-react
+npm start
 ```
 
 This will run your frontend app at:
