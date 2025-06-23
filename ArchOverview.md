@@ -14,13 +14,13 @@ To build an AI-powered analytics platform that enables CROs and revenue teams to
 
 ```
 ┌──────────────┐       ┌────────────────┐       ┌─────────────────────┐
-│  Frontend         │  <=>  │ FastAPI Server      │  <=>  │   Analytics Engine         │
-│  (React)          │       │ (LLM Orchestration)         │ (Pandas + OpenAI + PDF)    │
+│  Frontend    │  <=>  │ FastAPI Server │  <=>  │   Analytics Engine  │
+│  (React)     │       │ (LLM Orchestration)    │ (Pandas + OpenAI + PDF)    │
 └──────────────┘       └────────────────┘       └─────────────────────┘
                             │
                             ▼
                       ┌─────────────┐
-                      │   Database      │ (CSV or PostgreSQL)
+                      │   Database  │ (CSV or PostgreSQL)
                       └─────────────┘
 ```
 
@@ -92,7 +92,61 @@ To build an AI-powered analytics platform that enables CROs and revenue teams to
 
 ---
 
-## ⚙️ 3. Deployment Overview
+## 🧠 3. LLM Orchestration
+
+### Purpose:
+
+To handle natural language inputs and convert them into structured, explainable, and actionable insights using OpenAI models and function calling.
+
+### Flow:
+
+1. **Receive Query:**
+
+   * Endpoint `/api/query/stream` receives a user query + optional `conversation_id`
+2. **Step-by-Step LLM Pipeline:**
+
+   * **Step 1: Query Classification**
+     Identifies type (e.g., ranking, aggregation, visualization request)
+   * **Step 2: Function Planning**
+     LLM suggests one or more function calls (e.g., `get_top_accounts`, `analyze_win_rate`)
+   * **Step 3: Function Execution**
+     Backend executes Pandas-based functions and returns JSON
+   * **Step 4: Insight Generation**
+     LLM generates natural language explanation of results
+   * **Step 5: Visualization Planning**
+     LLM selects chart type(s) and assigns data keys and formatting
+   * **Step 6: Final Assembly**
+     Returns: `answer`, `key_metrics`, `visualizations`, `functions_executed`, `data_sources`
+
+### Highlights:
+
+* ✅ OpenAI function calling for grounded reasoning
+* ✅ Supports multi-turn conversations via `conversation_id`
+* ✅ Structured LLM output used directly for frontend rendering
+* ✅ Streaming support for real-time feedback
+
+### Example Function Schema:
+
+```json
+{
+  "function": "get_top_accounts_by_value",
+  "args": {
+    "limit": 5,
+    "min_amount": 10000
+  },
+  "response": [
+    {
+      "account_name": "Acme Corp",
+      "total_value": 1250000,
+      "deal_count": 4
+    }
+  ]
+}
+```
+
+---
+
+## ⚙️ 4. Deployment Overview
 
 ### Dev Environment
 
@@ -110,7 +164,7 @@ To build an AI-powered analytics platform that enables CROs and revenue teams to
 
 ---
 
-## 🔐 4. Security Considerations
+## 🔐 5. Security Considerations
 
 * ✅ OpenAI key never exposed to frontend
 * ✅ API rate-limiting can be enforced with middleware
@@ -119,7 +173,7 @@ To build an AI-powered analytics platform that enables CROs and revenue teams to
 
 ---
 
-## 📈 5. Future Enhancements
+## 📈 6. Future Enhancements
 
 * [ ] PostgreSQL-based data pipeline with upload UI
 * [ ] Admin panel for dataset management
