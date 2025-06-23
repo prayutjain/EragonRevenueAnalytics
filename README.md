@@ -15,6 +15,36 @@
 
 ---
 
+### 📁 Folder Structure
+
+Place your frontend code under a directory like:
+
+```
+project-root/
+├── revenue_analytics/
+│   └── enhanced_analytics_server.py
+│   └── opportunities.csv
+│   └── account_and_contact.csv
+│   └── requirements.txt
+├── revenue-analytics-frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   |   └── RevenueAnalyticsDashboard.jsx
+│   │   ├── styles/
+│   │   │   └── Dashboard.css
+│   │   │   └── Visualizations.css
+│   │   │   └── Animations.css
+│   │   │   └── Typography.css
+│   │   │   └── Responsive.css
+│   │   └── App.jsx
+│   │   └── index.js
+│   └── package.json
+│   └── package-lock.json
+```
+
+---
+
 ## 🛠️ Setup Instructions
 
 1. **Clone the Repository**
@@ -71,6 +101,8 @@
 * **Visualization Engine**: Uses `matplotlib` + `reportlab` to render charts and tables
 
 ---
+
+
 
 ## 🔌 API Documentation
 
@@ -169,27 +201,6 @@ Ensure you have the following installed:
 
 ---
 
-### 📁 Folder Structure
-
-Place your frontend code under a directory like:
-
-```
-project-root/
-├── backend/
-│   └── enhanced_analytics_server.py
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   ├── styles/
-│   │   └── Dashboard.css
-│   │   └── Visualizations.css
-│   │   └── Animations.css
-│   │   └── Typography.css
-│   │   └── Responsive.css
-│   ├── App.jsx
-│   └── index.js
-├── package.json
-```
 
 ---
 
